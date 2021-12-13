@@ -1,17 +1,23 @@
+require("./db/connection");
+//Import express framework
 const express = require("express");
+const cors = require("cors");
+const userRouter = require("./user/userRoutes");
 
+// Create the express app(s)
 const app = express();
-const app2 = express();
-const app3 = express();
+// const app2 = express();
 
-// Create a variable with the port (as we're using many ports, we don't need to create the variable)
-// const port = 5000;
+// Create a variable with the port (as we were using many ports, we didn't need to create the variable)
+const port = 5000;
 // const port1 = 5001;
 
-app.use("/", express.static("public"));
-app.use("/page2", express.static("public/page2.html"));
+app.use(express.json());
+app.use(cors());
+app.use(userRouter);
+// app.use("/page2", express.static("public/page2.html"));
 
-app.listen(5000, () => {
+app.listen(port, () => {
   console.log("Listening on port :5000");
 });
 
