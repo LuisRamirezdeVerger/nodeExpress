@@ -1,7 +1,7 @@
 // const res = require("express/lib/response");
 const User = require("./userModel");
 
-// Request - Response
+// Add user --- NOTE!: req, res = Request - Response
 exports.addUser = async (req, res) => {
   try {
     const newUser = new User(req.body);
@@ -11,3 +11,5 @@ exports.addUser = async (req, res) => {
     console.log(err);
   }
 };
+
+// Keep working here!

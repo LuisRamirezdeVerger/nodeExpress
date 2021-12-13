@@ -1,14 +1,14 @@
 require("./db/connection");
-//Import express framework
+// -- Import express framework
 const express = require("express");
 const cors = require("cors");
 const userRouter = require("./user/userRoutes");
 
-// Create the express app(s)
+// -- Create the express app(s)
 const app = express();
 // const app2 = express();
 
-// Create a variable with the port (as we were using many ports, we didn't need to create the variable)
+// -- Create a variable with the port (if we were using many ports, we'd not need to create the variable)
 const port = 5000;
 // const port1 = 5001;
 
