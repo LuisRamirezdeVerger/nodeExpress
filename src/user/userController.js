@@ -9,6 +9,7 @@ exports.addUser = async (req, res) => {
     res.status(200).send({ message: "User addes succesfully", newUser });
   } catch (err) {
     console.log(err);
+    res.status(500).send({ message: "Error, please try again" });
   }
 };
 
