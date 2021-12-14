@@ -8,7 +8,7 @@ const userRouter = require("./user/userRoutes");
 const app = express();
 // const app2 = express();
 
-// -- Create a variable with the port (if we were using many ports, we'd not need to create the variable)
+// -- Create a variable with the port (if we were using many ports, we wouldn't need to create the variable)
 const port = 5000;
 // const port1 = 5001;
 

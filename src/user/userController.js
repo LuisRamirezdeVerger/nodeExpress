@@ -5,7 +5,7 @@ const User = require("./userModel");
 exports.addUser = async (req, res) => {
   try {
     const newUser = new User(req.body);
-    await newUser.save();
+    await newUser.save(); //With .save we keep the value of "newUser"
     console.log(req.body.username);
     res.status(200).send({ message: "User added succesfully", newUser });
   } catch (err) {
@@ -18,7 +18,7 @@ exports.addUser = async (req, res) => {
 exports.list = async (req, res) => {
   try {
     console.log(await User.find({}));
-    res
+    res //ponse //200 = OK - 500 = err
       .status(200)
       .send({ message: `Here we've our list! ==> ${await User.find({})}` });
   } catch (err) {
@@ -30,6 +30,7 @@ exports.list = async (req, res) => {
 //Delete user
 exports.deleteUser = async (req, res) => {
   try {
+    // ".param" check for the existence of the data requested related to the route parameter(username).
     let username = await req.params.username;
     User.deleteOne(
       {
@@ -48,7 +49,7 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-// Update User
+// Update User (body is a built-in, works similar to .param)
 exports.updateUser = async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.body._id, req.body);
