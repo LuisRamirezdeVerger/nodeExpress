@@ -1,9 +1,9 @@
-const bc = require("bcryptjs");
+const bc = require("bcrypt"); // May be bcrypt
 const User = require("../user/userModel");
 
 exports.hashPassword = async (req, res, next) => {
   try {
-    req.body.password = await bcrypt.hash(req.body.password, 8);
+    req.body.password = await bc.hash(req.body.password, 8);
     next();
   } catch (err) {
     console.log(err);
