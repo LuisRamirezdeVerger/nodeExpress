@@ -11,7 +11,8 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     unique: true,
-    match: /.+\@.+\..+/, // ASK THIS!
+    match: /.+\@.+\..+/, // Format how email should be entered
+    // https://www.keycdn.com/support/regex-cheatsheet (regex docs)
   },
   password: {
     type: String,

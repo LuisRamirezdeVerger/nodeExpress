@@ -18,7 +18,7 @@ exports.addUser = async (req, res) => {
 exports.list = async (req, res) => {
   try {
     console.log(await User.find({}));
-    res //ponse //200 = OK - 500 = err
+    res //ponse //200 = OK -- 500 = err
       .status(200)
       .send({ message: `Here we've our list! ==> ${await User.find({})}` });
   } catch (err) {
@@ -49,12 +49,14 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
-// Update User (body is a built-in, works similar to .param)
+// Update User (.body is a built-in, works similar to .param)
 exports.updateUser = async (req, res) => {
   try {
     await User.findByIdAndUpdate(req.body._id, req.body);
     updateUser = await User.findById(req.body);
+    res.status(200).send({ message: "User updated!", updateUser });
   } catch (err) {
     console.log(err);
+    res.status(500).send({ message: "Error, try again" });
   }
 };

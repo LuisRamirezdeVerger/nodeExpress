@@ -5,8 +5,8 @@ const userRouter = Router();
 
 // CRUD Operations
 userRouter.post("/user", hashPassword, addUser);
-userRouter.get("/user", list);
-userRouter.put("/user", updateUser);
+userRouter.get("/user", hashPassword, list);
+userRouter.put("/user", hashPassword, updateUser);
 userRouter.delete("/user", deleteUser);
 
 //So we can user our endpoint in all of our files
