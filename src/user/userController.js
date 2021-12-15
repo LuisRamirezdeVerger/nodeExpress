@@ -14,7 +14,7 @@ exports.addUser = async (req, res) => {
   }
 };
 
-// List!
+// List!               v
 exports.list = async (req, res) => {
   try {
     console.log(await User.find({}));

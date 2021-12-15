@@ -4,11 +4,9 @@ const User = require("../user/userModel");
 exports.hashPassword = async (req, res, next) => {
   try {
     req.body.password = await bcrypt.hash(req.body.password, 8);
-    req.body.password = await bcrypt.compare(
-      req.body.password,
-      req.User.password
-    );
-
+    // ^v^v^v^v^v^v^v^ \\
+    const pass = await User.findOne({ username: req.body.username });
+    req.body.password = await bcrypt.compare(req.body.password, pass);
     next(); // [2]
   } catch (err) {
     console.log(err);
