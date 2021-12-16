@@ -10,7 +10,7 @@ exports.addUser = async (req, res) => {
     res.status(200).send({ message: "User added succesfully", newUser });
   } catch (err) {
     console.log(err);
-    res.status(500).send({ message: "Error, please try again" });
+    res.status(500).send({ message: "Adding" });
   }
 };
 
@@ -23,7 +23,7 @@ exports.list = async (req, res) => {
       .send({ message: `Here we've our list! ==> ${await User.find({})}` });
   } catch (err) {
     console.log(err);
-    res.status(500).send({ message: "Error, try again" });
+    res.status(500).send({ message: "Error listing" });
   }
 };
 
@@ -57,6 +57,14 @@ exports.updateUser = async (req, res) => {
     res.status(200).send({ message: "User updated!", updateUser });
   } catch (err) {
     console.log(err);
-    res.status(500).send({ message: "Error, try again" });
+    res.status(500).send({ message: "Error updating" });
+  }
+};
+
+exports.getUser = async (req, res) => {
+  try {
+    res.status(200).send({ username: req.user.username });
+  } catch (err) {
+    console.log(err);
   }
 };

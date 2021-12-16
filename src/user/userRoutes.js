@@ -1,15 +1,21 @@
 const { Router } = require("express");
-const { addUser, list, updateUser, deleteUser } = require("./userController");
-const { hashPassword } = require("../middleware");
+const {
+  addUser,
+  list,
+  updateUser,
+  deleteUser,
+  getUser,
+} = require("./userController");
+const { hashPassword, checkPassword } = require("../middleware");
 const userRouter = Router();
 
 // CRUD Operations
 userRouter.post("/user", hashPassword, addUser);
-userRouter.get("/user", hashPassword, list);
-userRouter.put("/user", hashPassword, updateUser);
+userRouter.get("/user", list);
+userRouter.put("/user", checkPassword, getUser);
 userRouter.delete("/user", deleteUser);
 
-//So we can user our endpoint in all of our files
+//So we can use our endpoint in all of our files
 /*        vvvvvvvv         */
 module.exports = userRouter;
 
