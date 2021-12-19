@@ -10,7 +10,7 @@ exports.addUser = async (req, res) => {
     res.status(200).send({ message: "User added succesfully", newUser });
   } catch (err) {
     console.log(err);
-    res.status(500).send({ message: "Adding" });
+    res.status(500).send({ message: "Error adding" });
   }
 };
 
@@ -40,7 +40,7 @@ exports.deleteUser = async (req, res) => {
         if (err) {
           res.send(err);
         } else {
-          res.send("Successfully! User has been Deleted.");
+          res.send("Successfully! User deleted:", username);
         }
       }
     );

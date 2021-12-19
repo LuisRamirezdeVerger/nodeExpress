@@ -16,7 +16,7 @@ exports.checkPassword = async (req, res, next) => {
   try {
     const user = await User.findOne({ email: req.body.email });
     if (await bcrypt.compare(req.body.password, user.password)) {
-      req.user = user; // If req.user === user then is matched
+      req.user = user; // If req.user === user then is a match
       next();
       console.log("Password matched!");
     } else {
